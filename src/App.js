@@ -16,7 +16,8 @@ import EditForm from "./containers/EditForm";
 import ResponsesTab from "./containers/ResponsesTab";
 
 function App() {
-  const url = "http://localhost:3100";
+  // const url = "http://localhost:3100";
+  const url = "https://tellmemorejr-backend.herokuapp.com/";
   const [formsList, setFormsList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
@@ -81,7 +82,7 @@ function App() {
           <FormDetails path="/form/:id" />
         </Route>
         <Route path="/ResponsesTab/:id">
-          <ResponsesTab url={url}/>
+          <ResponsesTab url={url} />
         </Route>
       </Switch>
     </Router>
