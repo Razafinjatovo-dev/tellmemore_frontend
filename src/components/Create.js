@@ -3,6 +3,9 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import QuestionInputForm from "./QuestionInputForm";
 import QuestionLine from "../components/QuestionLine";
+import MyFormsButton from "./buttons/MyFormsButton";
+import textFileGreen from "../assets/file-text-g.svg";
+import starGreen from "../assets/star-g.svg";
 
 const Create = ({
   formsList,
@@ -42,7 +45,7 @@ const Create = ({
 
   // Save form title
   const handleSubmitFormTitle = (event) => {
-    alert("new title added");
+    alert("Titre pris en compte");
     event.preventDefault();
     //copy current state
     const formCopy = { ...newForm };
@@ -127,7 +130,7 @@ const Create = ({
     } else {
       event.preventDefault();
       // setIsLoading(true);
-      alert("saving new form in db");
+      alert("Questionnaire crée");
       console.log(newForm);
       const payload = newForm;
       //AXIOS POST
@@ -158,62 +161,83 @@ const Create = ({
     );
   });
 
+  const redirectHome = () => {
+    history.push("/");
+  };
   return (
-    <div>
-      <h3>Creation formulaire</h3>
-      <button
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        Mes formulaires
-      </button>
+    <div className="createForm_wrapper">
+      <h3 className="title">Creation formulaire</h3>
+      <MyFormsButton clickHandler={redirectHome} />
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          borderColor: "green",
-          borderWidth: 2,
-          borderStyle: "solid",
-          padding: 10,
-          marginBottom: "20px",
-        }}
-      >
-        {/* TITLE FORM */}
-        <form onSubmit={handleSubmitFormTitle}>
-          <input
-            type="text"
-            required
-            onChange={handleTitleInput}
-            value={formTitle}
-          />
-          <button>Valider titre</button>
-        </form>
+      <div className="createForm_greenPart">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            // borderColor: "green",
+            // borderWidth: 2,
+            // borderStyle: "solid",
+            // padding: 10,
+
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          {/* TITLE FORM */}
+          <form onSubmit={handleSubmitFormTitle}>
+            <p className="title">Titre: {formTitle}</p>
+            <input
+              type="text"
+              required
+              onChange={handleTitleInput}
+              value={formTitle}
+              placeholder="Saisir le titre et appuyer sur entrée"
+              style={{ width: "300px" }}
+            />
+            <button>Valider titre</button>
+          </form>
+        </div>
+        <QuestionInputForm
+          hide={hide}
+          setHide={setHide}
+          newForm={newForm}
+          setNewForm={setNewForm}
+          questionType={questionType}
+        />
+
+        {/* Questions to display  */}
+        <div style={{ marginTop: 20 }}>{questionsToDisplay}</div>
+        <div className="CreateForm_AddButtons_wrapper">
+          <button
+            className="text addQuestionButton"
+            onClick={handleAddTextQuestion}
+          >
+            <p>
+              <img alt="textIcon" src={textFileGreen} />
+            </p>
+            <p>Ajouter une question "texte"</p>
+          </button>
+          <br />
+          <br />
+          <button
+            className="text addQuestionButton"
+            onClick={handleAddMarkQuestion}
+           
+          >
+            <p>
+              <img alt="textIcon" src={starGreen} />
+            </p>
+            <p>Ajouter une question "note"</p>
+          </button>
+        </div>
+        <button
+          style={{ border: "none" }}
+          className="greenButton"
+          onClick={handleSaveNewForm}
+        >
+          Créer le formulaire
+        </button>
       </div>
-      <QuestionInputForm
-        hide={hide}
-        setHide={setHide}
-        newForm={newForm}
-        setNewForm={setNewForm}
-        questionType={questionType}
-      />
-
-      {/* Questions to display  */}
-      <div style={{ marginTop: 20 }}>{questionsToDisplay}</div>
-    
-
-      <button onClick={handleAddTextQuestion}>
-        Ajouter une question "texte"
-      </button>
-      <br />
-      <br />
-      <button onClick={handleAddMarkQuestion}>
-        Ajouter une question "note"
-      </button>
-      <br />
-      <br />
-      <button onClick={handleSaveNewForm}>Sauvegarder</button>
     </div>
   );
 };

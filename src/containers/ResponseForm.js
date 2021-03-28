@@ -39,7 +39,7 @@ const ResponseForm = ({ url }) => {
 
       //axios post update url/id + payload
       const payload = newFormData;
-      console.log("payload", payload);
+      // console.log("payload", payload);
 
       const postData = async () => {
         const response = await axios.post(`${url}/update`, payload);
@@ -80,10 +80,15 @@ const ResponseForm = ({ url }) => {
             );
           })}
           <div>
-            <p>Merci d'avoir répondu à ce formulaire</p>
-            <button 
-            style={{border: "none", backgroundColor:"orange"}}
-            className="greenButton" onClick={handleSubmitResponses}>
+            <p className="text">
+              Merci d'avoir répondu à ce formulaire, cliquez sur "Sauvegarder
+              vos réponses" pour enregistrement
+            </p>
+            <button
+              style={{ border: "none", backgroundColor: "orange" }}
+              className="greenButton"
+              onClick={handleSubmitResponses}
+            >
               Sauvergarder vos réponses
             </button>
           </div>

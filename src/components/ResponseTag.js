@@ -14,6 +14,7 @@ const ResponseTag = ({
 
   const handleSubmitQuestionResponse = (event) => {
     event.preventDefault();
+    alert("Réponse prise en compte")
     //Create response to add
     let responseToAdd = {
       questionId: questionData._id,
@@ -24,7 +25,7 @@ const ResponseTag = ({
 
     // if responselist empty
     if (responsesList.length === 0) {
-      alert("responses List vide");
+      // alert("responses List vide");
       //Copy responsesList
       let newResponsesList = [...responsesList, responseToAdd];
       //Add the new response in responses list without any further check
@@ -34,7 +35,7 @@ const ResponseTag = ({
       for (let i = 0; i < responsesList.length; i++) {
         //If the questionId from this responseToAdd match with  the questionId from an existing response => it means this question is already answered
         if (responsesList[i].questionId === responseToAdd.questionId) {
-          alert("question already answered");
+          // alert("question already answered");
           //Copy responsesList
           let newResponsesList = [...responsesList];
           // replace the existing response by the new one
@@ -47,10 +48,12 @@ const ResponseTag = ({
           setResponsesList(newResponsesList);
           return;
         } else {
-          alert("no existing response for this question");
+          // alert("no existing response for this question");
+
           //if not yet answered, add the additionnal response to the existing responsesList
           const newResponsesList = [...responsesList, responseToAdd];
           setResponsesList(newResponsesList);
+
         }
       }
       // );
@@ -71,8 +74,8 @@ const ResponseTag = ({
       </h3>
       {questionData.responseType === "text" ? (
         <form onSubmit={handleSubmitQuestionResponse}>
-          <p>Votre réponse:</p>
-          <p>{responseTyped}</p>
+          {/* <p>Votre réponse:</p> */}
+          {/* <p>{responseTyped}</p> */}
           <TextArea
             // questionData={questionData}
             // responsesList={responsesList}

@@ -155,8 +155,7 @@ const EditForm = ({ url, isLoading, setIsLoading, refresh, setRefresh }) => {
         </div>
       </div>
       {/* Edit Page Header end */}
-
-      <div>
+      <div className="EditForm_greenPart"> 
         <div className="switch_Questions_Responses text">
           {/* NavBar allowing to switch from questions tab to responses tab */}
           {/* <SwitchQuestions_Responses id={id} /> */}
@@ -216,7 +215,7 @@ const EditForm = ({ url, isLoading, setIsLoading, refresh, setRefresh }) => {
                 );
               })}
             </div>
-            {/* questions à afficher fin */}
+            {/* Questions to display below */}
             <div style={{display:'flex'}}>
               <button
                 className="text addQuestionButton"

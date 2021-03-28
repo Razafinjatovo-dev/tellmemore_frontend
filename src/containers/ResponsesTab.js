@@ -30,6 +30,7 @@ const ResponsesTab = (props) => {
     };
     fetchData();
   }, [id]);
+
   return fetchingData === true ? (
     <p>Chargement...</p>
   ) : (
@@ -40,13 +41,13 @@ const ResponsesTab = (props) => {
         {formData.responses.map((response) => {
           const responseIndex = formData.responses.indexOf(response);
           return (
-            <div
+            <div 
               key={response._id}
               style={{
                 justifyContent: "space-between",
-                borderColor: "green",
-                borderWidth: 2,
-                borderStyle: "solid",
+                // borderColor: "green",
+                // borderWidth: 2,
+                // borderStyle: "solid",
                 padding: 10,
                 marginBottom: "20px",
               }}

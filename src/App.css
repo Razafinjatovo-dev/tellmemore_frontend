@@ -25,6 +25,7 @@
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
 
 .editButton {
@@ -78,7 +79,8 @@
 }
 
 .UpDownButton {
-  border: 1px solid #fc7b6f;
+  /* border: 1px solid #fc7b6f; */
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,6 +105,8 @@
   margin-right: 20px;
   margin-top: 40px;
   padding: 20px;
+  outline:none;
+  cursor: pointer;
 }
 /* HOME PAGE  */
 
@@ -195,8 +199,15 @@
   margin: 0 auto;
   min-height: 85vh;
   height: auto;
-
   position: relative;
+}
+.EditForm_greenPart {
+  margin-bottom: 20px;
+  background-color: #eaf9ec;
+  border-radius: 10px;
+  padding-left: 20px;
+  height: 80vh;
+  /* border: 2px solid red; */
 }
 
 .EditPage_Header {
@@ -204,6 +215,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .EditPage_Header_RightButtons {
@@ -272,6 +284,7 @@
 }
 
 .saveButtonWrapper {
+  /* border: 2px solid red; */
   position: absolute;
   bottom: 20px;
   right: 30px;
@@ -283,6 +296,10 @@
   /* border: 2px solid red; */
   display: flex;
   align-items: center;
+}
+
+.test {
+  border: 2px solid red;
 }
 
 .questionTab_question {
@@ -366,4 +383,20 @@
 .responseForm_textInput {
   width: 50vw;
   height: 10vw;
+}
+
+.createForm_wrapper {
+  width: var(--globalContainerWidth);
+  margin: 30px auto;
+}
+.createForm_greenPart {
+  background-color: #eaf9ec;
+  border-radius: 10px;
+  padding-left: 20px;
+  height: 70vh;
+}
+
+.CreateForm_AddButtons_wrapper {
+  display: flex;
+  margin-bottom: 30px;
 }

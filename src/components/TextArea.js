@@ -13,16 +13,14 @@ const TextArea = ({
   };
   return (
     <div>
-      <input
+      <textarea
         className='responseForm_textInput'
         type="textarea"
-        placeholder="Saisir votre réponse ici"
+        placeholder="Saisir votre réponse ici et cliquer sur valider"
         onChange={handleTextResponseInput}
         value={responseTyped}
-        // rows={100}
-        // cols={100}
-        // rows="100"
-        // cols="100"
+        rows={100}
+        cols={100}
       />
     </div>
   );
