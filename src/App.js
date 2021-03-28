@@ -17,7 +17,7 @@ import ResponsesTab from "./containers/ResponsesTab";
 
 function App() {
   // const url = "http://localhost:3100";
-  const url = "https://tellmemorejr-backend.herokuapp.com/";
+  const url = "https://tellmemorejr-backend.herokuapp.com";
   const [formsList, setFormsList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
