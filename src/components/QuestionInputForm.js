@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const QuestionInputForm = ({ hide, setHide, newForm, setNewForm,questionType}) => {
   const [newQuestion, setNewQuestion] = useState("");
   const [textInput, setTextInput] = useState("");
-  //Fonction gérant la saisie de texte
+
   const handleTextInput = (event) => {
     setTextInput(event.target.value);
     setNewQuestion({
@@ -16,15 +16,13 @@ const QuestionInputForm = ({ hide, setHide, newForm, setNewForm,questionType}) =
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        //rajouter la question au tableau questions
-        // Copier du state
+        // state copy
         let newFormCopy = { ...newForm };
-        // push de la question supplémentaire
+        // push the additional question
         newFormCopy.questions.push(newQuestion);
         
         //Update le state
         setNewForm(newFormCopy);
-        //vide le formulaire
         setTextInput("");
         // Hide the form 
         setHide(true)

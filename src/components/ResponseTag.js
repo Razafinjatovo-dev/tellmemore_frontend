@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import TextArea from "./TextArea";
 import Marks from "./Marks";
+import MyFormsButton from "./buttons/MyFormsButton";
 
 const ResponseTag = ({
   questionData,
@@ -8,20 +10,16 @@ const ResponseTag = ({
   responsesList,
   setResponsesList,
 }) => {
-  //   console.log(questionData);
   const [responseTyped, setResponseTyped] = useState();
 
   const handleSubmitQuestionResponse = (event) => {
     event.preventDefault();
-    // alert("response submitted");
     //Create response to add
     let responseToAdd = {
       questionId: questionData._id,
       questionContent: questionData.title,
       responseType: questionData.responseType,
       responseContent: responseTyped,
-
-      
     };
 
     // if responselist empty
@@ -33,12 +31,8 @@ const ResponseTag = ({
       return setResponsesList(newResponsesList);
     } else {
       //otherwise check inside responsesList if this question already answered
-      for (
-        let i = 0;
-        i < responsesList.length;
-        i++ // responsesList.forEach((response) =>
-      ) {
-        //If the questionId from this responseToAdd match with  the questionId from an existing response => it means this question already answered
+      for (let i = 0; i < responsesList.length; i++) {
+        //If the questionId from this responseToAdd match with  the questionId from an existing response => it means this question is already answered
         if (responsesList[i].questionId === responseToAdd.questionId) {
           alert("question already answered");
           //Copy responsesList
@@ -62,12 +56,23 @@ const ResponseTag = ({
       // );
     }
   };
+
   return (
     <div>
-      <h6>Question {questionIndex + 1}</h6>
-      <h3>{questionData.title}</h3>
+      <div>
+        {/* <MyFormsButton clickHandler={goBackToHomePage} /> */}
+        {/* <button onClick={() => history.push("/")}>Mes formulaires</button> */}
+      </div>
+      <h3 className="responseForm_questionNumber title">
+        QUESTION {questionIndex + 1}
+      </h3>
+      <h3 className="responseForm_questionContent title">
+        {questionData.title}
+      </h3>
       {questionData.responseType === "text" ? (
         <form onSubmit={handleSubmitQuestionResponse}>
+          <p>Votre réponse:</p>
+          <p>{responseTyped}</p>
           <TextArea
             // questionData={questionData}
             // responsesList={responsesList}
@@ -75,11 +80,16 @@ const ResponseTag = ({
             // responseTyped={responseTyped}
             setResponseTyped={setResponseTyped}
           />
-          <button type="submit">Valider réponse</button>
+          <button
+            style={{ border: "none", marginTop: "20px" }}
+            className="greenButton"
+            type="submit"
+          >
+            Valider
+          </button>
         </form>
       ) : (
         <form onSubmit={handleSubmitQuestionResponse}>
-          <p>Réponse: {responseTyped}</p>
           <Marks
             // questionData={questionData}
             // responsesList={responsesList}
@@ -87,6 +97,7 @@ const ResponseTag = ({
             // responseTyped={responseTyped}
             setResponseTyped={setResponseTyped}
           />
+          <p>Votre réponse: {responseTyped}</p>
           {/* <button type="submit">Valider réponse</button> */}
         </form>
       )}
@@ -102,7 +113,7 @@ export default ResponseTag;
 //   questionId: "feczecezc",
 //   questionContent: "name",
 //   responseType: "text"
-//   responseContent: "Billy"
+//   responseContent: "Dupont"
 // }
 
 //  {

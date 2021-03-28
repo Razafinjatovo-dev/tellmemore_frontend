@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import ResponseTag from "../components/ResponseTag";
+import MyFormsButton from "../components/buttons/MyFormsButton";
 
 const ResponseForm = ({ url }) => {
   const { id } = useParams();
@@ -10,7 +11,9 @@ const ResponseForm = ({ url }) => {
   const [formData, setFormData] = useState();
   const [fetchingData, setFetchingData] = useState(true);
   const [responsesList, setResponsesList] = useState([]);
-  console.log(responsesList);
+  const goBackToHomePage = () => {
+    history.push("/");
+  };
 
   // fetchdata form's data via id
   useEffect(() => {
@@ -33,10 +36,10 @@ const ResponseForm = ({ url }) => {
       // alert("responses submitted");
       const newFormData = { ...formData };
       newFormData.responses = responsesList;
-      
+
       //axios post update url/id + payload
       const payload = newFormData;
-      console.log("payload",payload);
+      console.log("payload", payload);
 
       const postData = async () => {
         const response = await axios.post(`${url}/update`, payload);
@@ -49,34 +52,41 @@ const ResponseForm = ({ url }) => {
     }
   };
 
-
-
   return fetchingData === true ? (
     <p>Chargement...</p>
   ) : (
-    <div>
-      <h3>ResponseForm</h3>
-      <h3>Titre du formulaire: {formData.form_title}</h3>
-      <div className="carroussel">
-        {/* {ResponseTagsToDisplay} */}
-        {formData.questions.map((question) => {
-          const questionIndex = formData.questions.indexOf(question);
-          return (
-            <ResponseTag
-              key={question._id}
-              questionData={question}
-              questionIndex={questionIndex}
-              responsesList={responsesList}
-              setResponsesList={setResponsesList}
-              data = {formData}
-            />
-          );
-        })}
-        <div>
-          <p>Merci d'avoir répondu à ce formulaire</p>
-          <button onClick={handleSubmitResponses}>
-            Accéder à mes formulaires
-          </button>
+    <div className="ResponseForm_globalWrapper">
+      <div>
+        <MyFormsButton clickHandler={goBackToHomePage} />
+      </div>
+      <div className="responseForm_container">
+        <div className="responseFormformTitle">
+          <h3>{formData.form_title}</h3>
+        </div>
+
+        <div className="carroussel">
+          {/* {ResponseTagsToDisplay} */}
+          {formData.questions.map((question) => {
+            const questionIndex = formData.questions.indexOf(question);
+            return (
+              <ResponseTag
+                key={question._id}
+                questionData={question}
+                questionIndex={questionIndex}
+                responsesList={responsesList}
+                setResponsesList={setResponsesList}
+                data={formData}
+              />
+            );
+          })}
+          <div>
+            <p>Merci d'avoir répondu à ce formulaire</p>
+            <button 
+            style={{border: "none", backgroundColor:"orange"}}
+            className="greenButton" onClick={handleSubmitResponses}>
+              Sauvergarder vos réponses
+            </button>
+          </div>
         </div>
       </div>
     </div>

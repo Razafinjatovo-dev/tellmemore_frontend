@@ -1,5 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import EditButton from "./buttons/EditButton";
+import GreenButton from "./buttons/GreenButton";
 
 const FormTag = ({ form }) => {
   let history = useHistory();
@@ -11,12 +13,18 @@ const FormTag = ({ form }) => {
   const handleResponseClick = () => {
     history.push(`/formFrontPage/${form._id}`);
   };
+
+ 
   return (
     <div className="FormTag">
-      <h4>FORMULAIRE</h4>
-      <h3>{form.form_title}</h3>
-      <button onClick={handleEditClick}>Editer</button>
-      <button onClick={handleResponseClick}>Répondre</button>
+      <p className="title FormTagTitle">FORMULAIRE</p>
+      <h3 className='text'>{form.form_title}</h3>
+      {/* <button onClick={handleEditClick}>Editer</button>
+      <button onClick={handleResponseClick}>Répondre</button> */}
+      <div>
+        <EditButton clickHandler={handleEditClick} />
+        <GreenButton clickHandler={handleResponseClick} text="Répondre" />
+      </div>
     </div>
   );
 };

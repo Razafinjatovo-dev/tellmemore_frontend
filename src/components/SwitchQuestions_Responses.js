@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SwitchQuestions_Responses = ({ id }) => {
   const history = useHistory();
   const formId = id;
+
+  const [disableQuestionsButton, setDisableQuestionsButton] = useState(false);
+  const [disableResponsesButton, setDisableResponsesButton] = useState(false);
+
+  const handleClickQuestionsTab = () => {};
+  const handleClickResponsesTab = () => {
+    setDisableResponsesButton(true);
+    history.push(`/ResponsesTab/${id}`);
+  };
+
   return (
     <nav
       style={{
@@ -11,12 +21,20 @@ const SwitchQuestions_Responses = ({ id }) => {
         borderColor: "green",
         borderWidth: "2px",
         borderStyle: "solid",
-        padding: "30px",
-        margin: "10px",
+        marginTop: "20px",
       }}
     >
-   
-      <button
+      <p>Questions</p>
+
+      <div>
+        {disableResponsesButton === false ? (
+          <button onClick={handleClickResponsesTab}>Responses Actif</button>
+        ) : (
+          <p>Responses Inactif</p>
+        )}
+      </div>
+
+      {/* <button
         onClick={() => {
           history.goBack();
         }}
@@ -29,7 +47,7 @@ const SwitchQuestions_Responses = ({ id }) => {
         }}
       >
         Réponses
-      </button>
+      </button> */}
     </nav>
   );
 };

@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import handleMoveUpQuestion from "../functions/moveUpFunction";
 import handleMoveDownQuestion from "../functions/moveDownFunction";
+import textFile from "../assets/file-text.svg";
+import star from "../assets/star.svg";
+import DeleteButton from "./buttons/DeleteButton";
+import UpDownButton from "./buttons/UpDownButton";
+import chevronUp from "../assets/chevron-up.svg";
+import chevronDown from "../assets/chevron-down.svg";
 
 const QuestionLine = ({
   question,
@@ -11,7 +17,7 @@ const QuestionLine = ({
   setUpdatedQuestions,
   create,
   edit,
-  url
+  url,
 }) => {
   const questionIndex = formData.questions.indexOf(question);
 
@@ -60,41 +66,57 @@ const QuestionLine = ({
     // axios post update
     const PostDelete = async () => {
       const response = await axios.post(`${url}/update`, payload);
-      console.log(response.data)
+      console.log(response.data);
     };
   };
 
   return (
     <div className="QuestionLine">
-      <div>
-        {questionIndex + 1}-{" "}
+      <div
+        className="questionNumber"
+        style={{
+          backgroundColor:
+            question.responseType === "text" ? "#F5BA49" : "#F09F97",
+        }}
+      >
+        <p>
+          {questionIndex + 1} <span>-</span>
+        </p>
         {question.responseType === "text" ? (
-          <span>text-icon</span>
+          <span>
+            <img alt="textIcon" src={textFile} />
+          </span>
         ) : (
-          <span>mark-icon</span>
+          <p>
+            <img alt="markIcon" src={star} />
+          </p>
         )}
       </div>
-      <p>{question.title}</p>
+      {/* <p>{question.title}</p> */}
       {/* <p>{questionDisplayed}</p> */}
       <input
         type="text"
         value={question.title}
         onChange={handleQuestionChange}
       />
-      <div>
+      <div className='UpDownDelete_Buttons_wrapper'>
         <button
+          className="UpDownButton"
           onClick={() => handleMoveUpQuestion(question, formData, setFormData)}
         >
-          up
+          <img alt="up" src={chevronUp} />
         </button>
+
         <button
+          className="UpDownButton"
           onClick={() =>
             handleMoveDownQuestion(question, formData, setFormData)
           }
         >
-          down
+          <img alt="down" src={chevronDown} />
         </button>
-        <button onClick={handleDeleteQuestion}>Supprimmer</button>
+
+        <DeleteButton clickHandler={handleDeleteQuestion} />
       </div>
     </div>
   );

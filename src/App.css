@@ -1,13 +1,369 @@
-.FormTag{
-    border: 2px solid green;
-    width: 400px;
-    margin-top: 20px;
+/* VARIABLES */
+
+/* buttons height */
+:root {
+  --buttonsHeight: 40px;
+  --globalContainerWidth: 90vw;
 }
 
-.QuestionLine{
-    border: 2px solid blue;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.body {
+  box-sizing: border-box;
+}
+
+/* BUTTONS */
+.greenButton {
+  /* border: 2px solid red; */
+  background-color: #62c188;
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+  height: var(--buttonsHeight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.editButton {
+  /* border: 2px solid red; */
+  background-color: none;
+  color: #62c188;
+  border-radius: 5px;
+  width: 100px;
+  height: var(--buttonsHeight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deleteButton {
+  border: 1px solid #fc7b6f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  width: 40px;
+  height: var(--buttonsHeight);
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.deleteButton > img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.myFormsButton {
+  height: var(--buttonsHeight);
+  display: flex;
+  /* border: 1px solid #fc7b6f; */
+  width: 140px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0e401c;
+}
+
+.UpDownDelete_Buttons_wrapper {
+  display: flex;
+}
+
+.UpDownButton {
+  border: 1px solid #fc7b6f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  width: 40px;
+  height: var(--buttonsHeight);
+  margin-right: 5px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.addQuestionButton {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  background-color: #eaf9ec;
+  height: var(--buttonsHeight);
+  border-radius: 2px;
+  font-weight: bold;
+  border: 1px solid#62C188;
+  color: #62c188;
+  margin-right: 20px;
+  margin-top: 40px;
+  padding: 20px;
+}
+/* HOME PAGE  */
+
+.HeaderContainer {
+  border-bottom: 1px solid lightgrey;
+}
+
+.Header {
+  width: var(--globalContainerWidth);
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.HomePage-Wrapper {
+  /* border: 2px blue solid; */
+  width: 86vw;
+  margin: 0 auto;
+}
+.formsList-container {
+  /* border: 2px red solid; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttonNewForm {
+  /* border: 2px black solid; */
+  /* width: 300px;
+  height: 200px; */
+  width: 25vw;
+  height: 20vw;
+  border-radius: 10px;
+  /* background: linear-gradient(blue, white);
+  background-color:  #62c188; */
+  background: linear-gradient(90deg, #eaf9ec, #62c188);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 20px;
+}
+
+.buttonNewForm div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.buttonNewForm span {
+  font-size: 3em;
+}
+
+.FormTag {
+  width: 25vw;
+  height: 20vw;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f5f7f7, lightgrey);
+  margin: 20px 0 20px 33px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.FormTagTitle {
+  color: #35764b;
+  font-size: 10px;
+}
+
+/* FormTag buttons */
+.FormTag > div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* TEXT AND TITLE FONT  */
+.text {
+  font-family: "Open Sans", sans-serif;
+}
+
+.title {
+  font-family: "Manrope", sans-serif;
+}
+
+.EditForm_Wrapper {
+  /* background-color: #EAF9EC; */
+  /* border: 2px solid pink; */
+  width: 90vw;
+  margin: 0 auto;
+  min-height: 85vh;
+  height: auto;
+
+  position: relative;
+}
+
+.EditPage_Header {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.EditPage_Header_RightButtons {
+  display: flex;
+}
+
+.EditPage_Header_title_Input {
+  width: 40vw;
+  height: var(--buttonsHeight);
+  font-size: 20px;
+  padding: 2px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+}
+
+.switch_Questions_Responses {
+  /* border: 2px solid red; */
+  display: flex;
+}
+
+.disabledSwitchTab {
+  color: #0e401c;
+  font-weight: bold;
+  border-bottom: 2px solid #0e401c;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+.switchTab {
+  /* border: 2px blue solid; */
+  color: #62c188;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.QuestionLine {
+  /* border: 2px solid blue; */
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.QuestionLine input {
+  height: var(--buttonsHeight);
+  flex: 1;
+  margin: 0 10px 0 20px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  font-size: 20px;
+  padding: 2px;
+}
+
+.questionNumber {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+  border-radius: 3px;
+  height: var(--buttonsHeight);
+  width: 70px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.saveButtonWrapper {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.question_Response {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+}
+
+.questionTab_question {
+  margin-left: 20px;
+  color: #95d6ae;
+}
+
+.questionTab_response {
+  /* border: 2px solid purple; */
+  padding-left: 90px;
+}
+
+.ResponseForm_globalWrapper {
+  padding-top: 40px;
+  width: var(--globalContainerWidth);
+  margin: 0 auto;
+}
+
+.responseForm_FrontPage_container {
+  /* border: 2px solid red; */
+  margin: 0 auto;
+  width: var(--globalContainerWidth);
+}
+
+.responseForm_FrontPage_container > div {
+  margin-top: 20px;
+}
+
+.responseForm_FrontPage_headlines {
+  /* border: 2px solid purple; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 40px;
+  margin-top: 20px;
+  width: var(--globalContainerWidth);
+  height: 70vh;
+  border-radius: 10px;
+  background-color: #eaf9ec;
+}
+
+.responseForm_formTitle {
+  /* border: 2px solid red; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #0e401c;
+  font-size: 1.5em;
+}
+
+.responseForm_FrontPage_headlines p {
+  color: #4c875e;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.responseForm_container {
+  /* border: 2px solid pink; */
+  background-color: #eaf9ec;
+  margin: 30px auto;
+  width: var(--globalContainerWidth);
+  border-radius: 20px;
+  height: 80vh;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.responseForm_questionNumber {
+  color: #a6c8af;
+  font-size: 1em;
+}
+
+.responseForm_questionContent {
+  color: #0e401c;
+}
+
+.responseForm_textInput {
+  width: 50vw;
+  height: 10vw;
 }

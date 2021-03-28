@@ -116,20 +116,10 @@ const Create = ({
       return question !== elementToRemove;
     });
     //Update State
-    // console.log(filteredForm)
     setNewForm({ ...newForm, questions: filteredQuestions });
   };
 
   // MANAGE CREATING NEWFORM
-
-  //   const handleSaveNewForm = (event) => {
-  //     alert("saving new form in db");
-  //     //Copy formsList and push the new form in the array
-  //     const newFormsList = [...formsList, newForm];
-  //     //update state
-  //     setFormsList(newFormsList);
-  //     history.push("/");
-  //   };
 
   const handleSaveNewForm = (event) => {
     if (formTitle === "") {
@@ -153,8 +143,6 @@ const Create = ({
     }
   };
 
- 
-
   const questionsToDisplay = newForm.questions.map((question) => {
     return (
       <div key={question._id}>
@@ -164,7 +152,7 @@ const Create = ({
           setFormData={setNewForm}
           updatedQuestions={updatedQuestions}
           setUpdatedQuestions={setUpdatedQuestions}
-          create = {true}
+          create={true}
         />
       </div>
     );
@@ -202,8 +190,6 @@ const Create = ({
           />
           <button>Valider titre</button>
         </form>
-
-       
       </div>
       <QuestionInputForm
         hide={hide}
@@ -213,9 +199,9 @@ const Create = ({
         questionType={questionType}
       />
 
-      {/* ICI ON AFFICHE LES QUESTIONS */}
+      {/* Questions to display  */}
       <div style={{ marginTop: 20 }}>{questionsToDisplay}</div>
-      {/* ICI ON AFFICHE LES QUESTIONS */}
+    
 
       <button onClick={handleAddTextQuestion}>
         Ajouter une question "texte"

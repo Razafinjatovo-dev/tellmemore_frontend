@@ -1,10 +1,12 @@
 import React from "react";
+import TellMeMoreLogo from "../assets/logoTellMeMore.svg";
 
 const Header = () => {
   return (
-    <div>
-      <h3>TELL ME MORE</h3>
-      <hr></hr>
+    <div className="HeaderContainer">
+      <div className="Header">
+        <img alt="Logo" src={TellMeMoreLogo} />
+      </div>
     </div>
   );
 };
